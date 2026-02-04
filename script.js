@@ -1,4 +1,4 @@
-// ========================================
+﻿// ========================================
 // SMOOTH SCROLL & ANIMATIONS
 // ========================================
 
@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.disabled = true;
 
             setTimeout(() => {
-                alert('🎉 Registration Successful! Welcome to Ad Makerrrs 2026. Check your email for details.');
+                alert('\u{1F389} Registration Successful! Welcome to Ad Makerrrs 2026. Check your email for details.');
                 modal.classList.remove('active');
                 document.body.style.overflow = '';
                 registrationForm.reset();
@@ -361,5 +361,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Any additional scroll logic goes here
     }, 100));
 
-    console.log('Ad Makkerrrs landing page loaded successfully! 🎯');
+    console.log('Ad Makkerrrs landing page loaded successfully! \u{1F3AF}');
 });
+

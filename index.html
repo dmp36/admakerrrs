@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -123,7 +123,7 @@
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>Silver Pass</h3>
-                        <div class="price">₹2,999</div>
+                        <div class="price">&#8377;2,999</div>
                     </div>
                     <ul class="benefits">
                         <li>Access to main event</li>
@@ -137,7 +137,7 @@
                     <div class="badge">Most Popular</div>
                     <div class="pricing-header">
                         <h3>Gold Pass</h3>
-                        <div class="price">₹4,999</div>
+                        <div class="price">&#8377;4,999</div>
                     </div>
                     <ul class="benefits">
                         <li>All Silver Pass benefits</li>
@@ -151,7 +151,7 @@
                 <div class="pricing-card">
                     <div class="pricing-header">
                         <h3>VIP Pass</h3>
-                        <div class="price">₹9,999</div>
+                        <div class="price">&#8377;9,999</div>
                     </div>
                     <ul class="benefits">
                         <li>All Gold Pass benefits</li>
@@ -175,28 +175,28 @@
                     <h2 class="section-title">Why Attend Ad Makerrrs?</h2>
                     <ul class="why-list">
                         <li>
-                            <span class="bullet">→</span>
+                            <span class="bullet">&rarr;</span>
                             <div>
                                 <strong>Transform Your Brand</strong>
                                 <p>Learn cutting-edge strategies to elevate your brand presence</p>
                             </div>
                         </li>
                         <li>
-                            <span class="bullet">→</span>
+                            <span class="bullet">&rarr;</span>
                             <div>
                                 <strong>Scale Your Ads Profitably</strong>
                                 <p>Master the art of scaling campaigns without burning budgets</p>
                             </div>
                         </li>
                         <li>
-                            <span class="bullet">→</span>
+                            <span class="bullet">&rarr;</span>
                             <div>
                                 <strong>Maximize Your ROI</strong>
                                 <p>Get actionable insights that directly impact your bottom line</p>
                             </div>
                         </li>
                         <li>
-                            <span class="bullet">→</span>
+                            <span class="bullet">&rarr;</span>
                             <div>
                                 <strong>Build Elite Connections</strong>
                                 <p>Network with the who's who of marketing and advertising</p>
@@ -327,7 +327,7 @@
             <h2 class="cta-title">Don't Miss the Ultimate Ad Makerrrs</h2>
             <p class="cta-subtitle">Join the elite circle of brand builders and marketing masters</p>
             <button class="btn btn-primary btn-large">Get Your Pass Now</button>
-            <p class="urgency">⚡ Early bird pricing ends soon • Limited seats available</p>
+            <p class="urgency">&#9889; Early bird pricing ends soon &#8226; Limited seats available</p>
         </div>
     </section>
 
@@ -398,7 +398,7 @@
     <!-- Registration Modal -->
     <div class="modal-overlay" id="registrationModal">
         <div class="modal">
-            <button class="modal-close" id="modalClose">×</button>
+            <button class="modal-close" id="modalClose">&times;</button>
             <div class="modal-header">
                 <h3>Secure Your Spot</h3>
                 <p>Join the elite at Ad Makerrrs 2026</p>
@@ -406,18 +406,18 @@
             <form class="modal-form" id="registrationForm">
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" placeholder="John Doe" required>
+                    <input type="text" id="fullName" name="full_name" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
                     <label>Email Address</label>
-                    <input type="email" placeholder="john@example.com" required>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
                 </div>
                 <div class="form-group">
                     <label>Pass Type</label>
-                    <select id="passTypeSelect">
-                        <option value="silver">Silver Pass (₹2,999)</option>
-                        <option value="gold">Gold Pass (₹4,999)</option>
-                        <option value="vip">VIP Pass (₹9,999)</option>
+                    <select id="passTypeSelect" name="pass_type">
+                        <option value="silver">Silver Pass (&#8377;2,999)</option>
+                        <option value="gold">Gold Pass (&#8377;4,999)</option>
+                        <option value="vip">VIP Pass (&#8377;9,999)</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Complete Registration</button>
@@ -429,3 +429,4 @@
 </body>
 
 </html>
+
