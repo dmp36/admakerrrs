@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
@@ -9,7 +10,11 @@ app = FastAPI(title='Ad Makerrrs API', version='1.0.0')
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=[
+        'http://localhost:5500',
+        'http://127.0.0.1:5500',
+        'http://localhost:8000',
+    ],
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],
@@ -18,7 +23,8 @@ app.add_middleware(
 
 @app.on_event('startup')
 def on_startup():
-    Base.metadata.create_all(bind=engine)
+    # Base.metadata.create_all(bind=engine)
+    pass
 
 
 @app.get('/api/health')
@@ -36,3 +42,9 @@ def get_registrations(limit: int = 100, db: Session = Depends(get_db)):
     if limit > 200:
         raise HTTPException(status_code=400, detail='limit must be <= 200')
     return crud.list_registrations(db, limit=limit)
+
+
+@app.get('/admin', response_class=HTMLResponse)
+def admin_dashboard():
+    with open('static/admin.html', 'r') as f:
+        return f.read()

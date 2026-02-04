@@ -9,4 +9,5 @@ class Registration(Base):
     full_name = Column(String(200), nullable=False)
     email = Column(String(200), nullable=False, index=True)
     pass_type = Column(String(50), nullable=False)
+    variant = Column(String(10), nullable=True, default='A')
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)

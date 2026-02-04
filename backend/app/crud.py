@@ -7,6 +7,7 @@ def create_registration(db: Session, payload: schemas.RegistrationCreate) -> mod
         full_name=payload.full_name,
         email=payload.email,
         pass_type=payload.pass_type,
+        variant=payload.variant,
     )
     db.add(registration)
     db.commit()

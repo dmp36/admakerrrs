@@ -3,6 +3,22 @@
 // ========================================
 
 document.addEventListener('DOMContentLoaded', function () {
+    // ========================================
+    // A/B Testing Logic
+    // ========================================
+    let variant = sessionStorage.getItem('ab_variant');
+    if (!variant) {
+        variant = Math.random() < 0.5 ? 'A' : 'B';
+        sessionStorage.setItem('ab_variant', variant);
+    }
+    console.log(`Current Variant: ${variant}`);
+
+    if (variant === 'B') {
+        const heroTitle = document.querySelector('.hero-title');
+        const heroDesc = document.querySelector('.hero-desc');
+        if (heroTitle) heroTitle.textContent = "Unlock Your Potential";
+        if (heroDesc) heroDesc.textContent = "The Ultimate Event for Future Leaders";
+    }
 
     // ========================================
     // FAQ Accordion
@@ -335,7 +351,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Handle Registration Form Submission
     if (registrationForm) {
-        registrationForm.addEventListener('submit', (e) => {
+        registrationForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = registrationForm.querySelector('button');
             const originalText = btn.textContent;
@@ -343,18 +359,37 @@ document.addEventListener('DOMContentLoaded', function () {
             btn.textContent = 'Processing...';
             btn.disabled = true;
 
-            setTimeout(() => {
-                alert('\u{1F389} Registration Successful! Welcome to Ad Makerrrs 2026. Check your email for details.');
+            const formData = new FormData(registrationForm);
+            const data = Object.fromEntries(formData.entries());
+            data.variant = sessionStorage.getItem('ab_variant') || 'A';
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/registrations', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail?.[0]?.msg || 'Registration failed');
+                }
+
+                alert('\u{1F389} Registration Successful! Welcome to Ad Makerrrs 2026.');
                 modal.classList.remove('active');
                 document.body.style.overflow = '';
                 registrationForm.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Registration failed: ' + error.message);
+            } finally {
                 btn.textContent = originalText;
                 btn.disabled = false;
-            }, 1500);
+            }
         });
     }
-
-
 
     // Apply throttle to scroll events
     window.addEventListener('scroll', throttle(() => {
